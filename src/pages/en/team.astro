@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TeamGrid from '../../components/TeamGrid.astro';
+import CTABlock from '../../components/CTABlock.astro';
+
+const teamMembers = [
+  {
+    name: 'Zulfiya Urunova',
+    role: 'CEO',
+    company: 'Microsoft',
+    image: '/images/team/Zulfiya.png',
+    bio: 'Founder and CEO of Take Care Mom. Former Microsoft. A mom who turned personal experience into a mission to help other parents.',
+  },
+  {
+    name: 'Zhaniya Aitbayeva',
+    role: 'CFO',
+    company: 'KPMG',
+    image: '/images/team/Zhaniya.png',
+    bio: 'CFO and co-founder of Take Care Mom. Former KPMG. Responsible for financial strategy and business development.',
+  },
+  {
+    name: 'Aigul Algozhina',
+    role: 'Psychiatrist',
+    company: '',
+    image: '/images/team/Aigul.png',
+    bio: 'Psychiatrist at Take Care Mom. Helps moms cope with emotional challenges of motherhood and take care of mental health.',
+  },
+];
+---
+
+<BaseLayout
+  title="Team"
+  description="Meet the Take Care Mom team: Zulfiya Urunova (CEO) and Zhaniya Aitbayeva (CFO)."
+  lang="en"
+>
+  <!-- Hero -->
+  <Hero
+    title="The Team Behind Take Care Mom"
+    subtitle="Team"
+    description="We created Take Care Mom because we went through the challenges of motherhood ourselves and want to help other parents."
+    centered={true}
+    gradient={true}
+  />
+
+  <!-- Team members -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-3 gap-12">
+        {teamMembers.map((member) => (
+          <div class="text-center">
+            <div class="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden shadow-lg">
+              <img src={member.image} alt={member.name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h2 class="font-bold text-xl text-gray-900 mb-1">{member.name}</h2>
+            <p class="text-coral-600 font-medium mb-1">{member.role}</p>
+            {member.company && (
+              <p class="text-sm text-gray-500 mb-4">ex-{member.company}</p>
+            )}
+            <p class="text-gray-600">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section-padding bg-surface-50">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="absolute inset-0 bg-coral-200 rounded-3xl scale-105 blur-2xl opacity-40"></div>
+          <img src="/images/two_of_us.png" alt="Take Care Mom Founders" class="relative rounded-3xl shadow-xl w-full" loading="lazy" />
+        </div>
+        <div>
+          <h2 class="heading-2 mb-6">Our Story</h2>
+          <p class="text-gray-600 mb-4">
+            Take Care Mom started as a social project by two young moms from Almaty.
+            We faced a lack of information and support in the first months of motherhood
+            and decided to create a space where every mom could find answers to her questions.
+          </p>
+          <p class="text-gray-600 mb-4">
+            With the idea of a mom community, we received a government grant from QazInnovation in 2023.
+            This allowed us to develop the project into a full-fledged ecosystem with an app,
+            community and educational content.
+          </p>
+          <p class="text-gray-600">
+            Today Take Care Mom has over 20,000 subscribers, 3,500+ app users
+            and international recognition, including the Antler Indonesia finals and UN Women Expo 2025.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <h2 class="heading-2 text-center mb-12">Our Values</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Trust</h3>
+          <p class="text-gray-600 text-sm">
+            Only verified information from doctors and specialists. Evidence-based approach to content.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Support</h3>
+          <p class="text-gray-600 text-sm">
+            We create a safe space where every mom can get help and understanding.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Accessibility</h3>
+          <p class="text-gray-600 text-sm">
+            Technology and knowledge should be accessible to every parent, regardless of location.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Want to Contact Us?"
+    description="We're always happy to receive feedback and partnership proposals."
+    primaryCta={{ label: 'Contact', href: '/en/contact' }}
+    variant="coral"
+  />
+</BaseLayout>

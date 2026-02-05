@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import BadgeWall from '../../components/BadgeWall.astro';
+import PressList from '../../components/PressList.astro';
+import CTABlock from '../../components/CTABlock.astro';
+---
+
+<BaseLayout
+  title="About Us"
+  description="Take Care Mom: ecosystem for parents. Our achievements, media coverage and metrics."
+  lang="en"
+>
+  <!-- Hero -->
+  <Hero
+    title="An Ecosystem Parents Trust"
+    subtitle="About Us"
+    description="Take Care Mom is an ecosystem for parents where every parent can get the necessary knowledge, support and make the right choice for their child."
+    centered={true}
+    gradient={true}
+  />
+
+
+  <!-- Mission -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-coral-600 font-medium mb-2">Our Mission</p>
+          <h2 class="heading-2 mb-6">You Take Care of Your Baby, We Take Care of You</h2>
+          <p class="text-gray-600 mb-4">
+            We created Take Care Mom because we went through the challenges of the first months of motherhood ourselves.
+            Lack of information, absence of support and hundreds of unanswered questions.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Today our ecosystem combines a blog with expert content, a support community
+            and an app with tools for tracking your child's health and development.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Verified information from doctors and specialists</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Support from a community of fellow moms</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Convenient tools for tracking development</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Events and meetups for moms</span>
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-pink-200 rounded-3xl scale-105 blur-2xl opacity-40"></div>
+          <img src="/images/pregnant mom.png" alt="Pregnant mom" class="relative rounded-3xl shadow-xl w-full" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <BadgeWall title="Achievements and Awards" />
+
+  <!-- Press -->
+  <PressList title="Media Coverage" />
+
+  <!-- CTA -->
+  <CTABlock
+    title="Join the Ecosystem"
+    description="Over 20,000 parents are already with us. Become part of the community."
+    primaryCta={{ label: 'Download App', href: '/en/app' }}
+    secondaryCta={{ label: 'Join Community', href: 'https://t.me/takecaremomcommunity' }}
+    variant="coral"
+  />
+</BaseLayout>

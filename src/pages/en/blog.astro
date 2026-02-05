@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTABlock from '../../components/CTABlock.astro';
+
+const features = [
+  {
+    icon: 'doctor',
+    title: 'Expert Platform',
+    description: 'Content from doctors and child specialists. Verified information from pediatricians, psychologists and nutritionists.',
+  },
+  {
+    icon: 'review',
+    title: 'Reviews and Recommendations',
+    description: 'Honest reviews of children centers, developmental activities and products for children.',
+  },
+  {
+    icon: 'education',
+    title: 'Educational Content',
+    description: 'Educational content about health, development and child-rearing. Evidence-based approach.',
+  },
+];
+
+// Placeholder for future blog posts
+const latestPosts = [
+  {
+    title: 'How to Establish Your Child\'s Sleep: Pediatrician Tips',
+    excerpt: 'Practical recommendations for establishing a healthy sleep routine for children of different ages.',
+    category: 'Sleep',
+    date: 'Coming Soon',
+  },
+  {
+    title: 'First Solid Foods: Where to Start',
+    excerpt: 'Step-by-step guide to introducing solid foods from a child nutritionist.',
+    category: 'Nutrition',
+    date: 'Coming Soon',
+  },
+  {
+    title: 'Speech Development: Norms and Deviations',
+    excerpt: 'When should a child start talking and how to help speech development.',
+    category: 'Development',
+    date: 'Coming Soon',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog"
+  description="TakeCareMom Blog: expert content about health, development and child-rearing from doctors and specialists."
+  lang="en"
+>
+  <!-- Hero -->
+  <Hero
+    title="Expert Knowledge for Parents"
+    subtitle="Blog"
+    description="Verified information from doctors, psychologists and child specialists. Reviews, recommendations and educational content."
+    primaryCta={{ label: 'Read on Instagram', href: 'https://instagram.com/takecare_mom' }}
+    gradient={true}
+  />
+
+  <!-- What we offer -->
+  <FeatureGrid
+    title="What Our Blog Offers"
+    subtitle="Content"
+    features={features}
+    columns={3}
+  />
+
+  <!-- Coming soon posts -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-coral-600 font-medium mb-2">Coming to the Site</p>
+        <h2 class="heading-2">Articles We're Preparing</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {latestPosts.map((post) => (
+          <article class="card">
+            <div class="mb-4">
+              <span class="inline-block px-3 py-1 text-xs font-medium text-coral-600 bg-coral-50 rounded-full">
+                {post.category}
+              </span>
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-2">{post.title}</h3>
+            <p class="text-gray-600 text-sm mb-4">{post.excerpt}</p>
+            <p class="text-sm text-gray-400">{post.date}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram feed reference -->
+  <section class="section-padding bg-surface-50">
+    <div class="container-narrow text-center">
+      <h2 class="heading-2 mb-4">Follow Us on Instagram</h2>
+      <p class="text-gray-600 mb-8">
+        While we prepare a full blog on the site, all our articles and useful content are available on Instagram.
+        Join 20,000 subscribers.
+      </p>
+      <a
+        href="https://instagram.com/takecare_mom"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary inline-flex items-center gap-2"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @takecare_mom
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Want to Receive Useful Content?"
+    description="Join our community and get expert articles, checklists and guides."
+    primaryCta={{ label: 'Join Community', href: 'https://t.me/takecaremomcommunity' }}
+    secondaryCta={{ label: 'Download App', href: '/en/app' }}
+    variant="default"
+  />
+</BaseLayout>

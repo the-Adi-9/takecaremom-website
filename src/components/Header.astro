@@ -1,0 +1,154 @@
+---
+const currentPath = Astro.url.pathname;
+const isEnglish = currentPath.startsWith('/en');
+const basePath = isEnglish ? '/en' : '';
+
+const navItemsRu = [
+  { href: '/', label: 'Главная' },
+  { href: '/app', label: 'Приложение' },
+  { href: '/community', label: 'Сообщество' },
+  { href: '/blog', label: 'Блог' },
+  { href: '/trust', label: 'О нас' },
+  { href: '/podcast', label: 'Подкаст' },
+  { href: '/contact', label: 'Контакты' },
+];
+
+const navItemsEn = [
+  { href: '/en', label: 'Home' },
+  { href: '/en/app', label: 'App' },
+  { href: '/en/community', label: 'Community' },
+  { href: '/en/blog', label: 'Blog' },
+  { href: '/en/trust', label: 'About' },
+  { href: '/en/podcast', label: 'Podcast' },
+  { href: '/en/contact', label: 'Contact' },
+];
+
+const navItems = isEnglish ? navItemsEn : navItemsRu;
+
+function isActive(href: string): boolean {
+  if (href === '/' || href === '/en') {
+    return currentPath === href || currentPath === href + '/';
+  }
+  return currentPath.startsWith(href);
+}
+
+// Get the equivalent page in the other language
+function getAlternateUrl(): string {
+  if (isEnglish) {
+    // Remove /en prefix to get Russian version
+    const ruPath = currentPath.replace(/^\/en/, '') || '/';
+    return ruPath;
+  } else {
+    // Add /en prefix to get English version
+    return '/en' + (currentPath === '/' ? '' : currentPath);
+  }
+}
+---
+
+<header class="sticky top-0 z-50 glass border-b border-gray-100/50">
+  <nav class="container-wide">
+    <div class="flex items-center justify-between h-18 lg:h-20">
+      <!-- Logo -->
+      <a href={basePath || '/'} class="flex items-center gap-3 shrink-0 group">
+        <img
+          src="/images/logo.jpg"
+          alt="Take Care Mom"
+          class="w-11 h-11 rounded-full group-hover:scale-105 transition-transform object-cover"
+        />
+        <span class="font-bold text-xl text-gray-900 hidden sm:block">Take Care Mom</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+              isActive(item.href)
+                ? 'text-coral-600 bg-coral-50'
+                : 'text-gray-600 hover:text-coral-600 hover:bg-coral-50'
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Language Switcher + CTA Desktop -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Language Switcher -->
+        <a
+          href={getAlternateUrl()}
+          class="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-coral-600 hover:bg-coral-50 transition-all"
+          title={isEnglish ? 'Переключить на русский' : 'Switch to English'}
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          {isEnglish ? 'RU' : 'EN'}
+        </a>
+
+        <!-- CTA Button -->
+        <a href={`${basePath}/app`} class="btn-primary text-sm py-3 px-6">
+          {isEnglish ? 'Download' : 'Скачать'}
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="lg:hidden p-2.5 -mr-2 rounded-full text-gray-600 hover:text-coral-600 hover:bg-coral-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label={isEnglish ? 'Open menu' : 'Открыть меню'}
+        id="mobile-menu-button"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="hidden lg:hidden pb-6" id="mobile-menu">
+      <div class="flex flex-col gap-2 pt-4 border-t border-gray-100">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-4 py-3 rounded-xl text-base font-medium transition-all',
+              isActive(item.href)
+                ? 'text-coral-600 bg-coral-50'
+                : 'text-gray-600 hover:text-coral-600 hover:bg-coral-50'
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+
+        <!-- Language Switcher Mobile -->
+        <a
+          href={getAlternateUrl()}
+          class="px-4 py-3 rounded-xl text-base font-medium text-gray-600 hover:text-coral-600 hover:bg-coral-50 transition-all flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          {isEnglish ? 'Русский' : 'English'}
+        </a>
+
+        <a href={`${basePath}/app`} class="btn-primary mt-4 justify-center">
+          {isEnglish ? 'Download App' : 'Скачать приложение'}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

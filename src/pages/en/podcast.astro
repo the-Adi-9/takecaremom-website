@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CTABlock from '../../components/CTABlock.astro';
+
+const platforms = [
+  { name: 'Apple Podcasts', href: 'https://podcasts.apple.com/podcast/id1729024446', icon: 'apple' },
+  { name: 'Spotify', href: 'https://open.spotify.com/show/id1729024446', icon: 'spotify' },
+  { name: 'Yandex Music', href: 'https://music.yandex.ru/album/id1729024446', icon: 'yandex' },
+  { name: 'Google Podcasts', href: 'https://podcasts.google.com/feed/id1729024446', icon: 'google' },
+  { name: 'Castbox', href: 'https://castbox.fm/channel/id1729024446', icon: 'castbox' },
+  { name: 'Pocket Casts', href: 'https://pocketcasts.com/podcast/id1729024446', icon: 'pocketcasts' },
+  { name: 'Stitcher', href: 'https://www.stitcher.com/podcast/id1729024446', icon: 'stitcher' },
+  { name: 'Overcast', href: 'https://overcast.fm/itunes1729024446', icon: 'overcast' },
+  { name: 'Castro', href: 'https://castro.fm/podcast/id1729024446', icon: 'castro' },
+  { name: 'RadioPublic', href: 'https://radiopublic.com/id1729024446', icon: 'radiopublic' },
+  { name: 'RSS Feed', href: 'https://podcast.ru/1729024446', icon: 'rss' },
+];
+
+const iconPaths: Record<string, string> = {
+  apple: `<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>`,
+  spotify: `<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>`,
+  yandex: `<path d="M12 0C5.374 0 0 5.374 0 12s5.374 12 12 12 12-5.374 12-12S18.626 0 12 0zm3.428 17.143h-2.143V9.429l-3 7.714H8.57l-3-7.714v7.714H3.43V6.857h3l2.57 6.857 2.571-6.857h3.857v10.286z"/>`,
+  google: `<path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm-.001 5.75c3.18 0 5.396 2.456 5.396 5.944 0 3.487-2.217 5.944-5.396 5.944-3.18 0-5.396-2.457-5.396-5.944 0-3.488 2.216-5.944 5.396-5.944z"/>`,
+  rss: `<path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44A15.56 15.56 0 0 1 19.56 20h-3.3A12.27 12.27 0 0 0 4 7.74V4.44zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-3.3A6.6 6.6 0 0 0 4 13.4v-3.3z"/>`,
+  castbox: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"/>`,
+  pocketcasts: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19.5c-4.142 0-7.5-3.358-7.5-7.5S7.858 4.5 12 4.5s7.5 3.358 7.5 7.5-3.358 7.5-7.5 7.5z"/>`,
+  stitcher: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16H7V8h3v8zm5 0h-3V8h3v8z"/>`,
+  overcast: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18l-4-4h8l-4 4zm0-6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>`,
+  castro: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6zm0-10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>`,
+  radiopublic: `<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 16H8v-5h3v5zm5 0h-3V8h3v8z"/>`,
+};
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Mama Talk Podcast by Take Care Mom: conversations about motherhood, parenting and self-care."
+  lang="en"
+>
+  <!-- Hero -->
+  <Hero
+    title="Mama Talk: Podcast for Moms"
+    subtitle="Podcast"
+    description="Honest conversations about motherhood, parenting and self-care. Listen on your favorite platform."
+    primaryCta={{ label: 'Listen', href: 'https://podcast.ru/1729024446' }}
+    centered={true}
+    gradient={true}
+  />
+
+  <!-- Platforms -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <h2 class="heading-2 text-center mb-12">Listen on Your Favorite Platform</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {platforms.map((platform) => (
+          <a
+            href={platform.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card flex flex-col items-center justify-center py-6 hover:shadow-lg transition-shadow group"
+          >
+            <div class="w-10 h-10 rounded-lg bg-surface-100 flex items-center justify-center mb-3 group-hover:bg-coral-50 transition-colors">
+              <svg class="w-5 h-5 text-gray-600 group-hover:text-coral-600 transition-colors" fill="currentColor" viewBox="0 0 24 24" set:html={iconPaths[platform.icon] || iconPaths.rss} />
+            </div>
+            <span class="text-sm font-medium text-gray-900 text-center">{platform.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About podcast -->
+  <section class="section-padding bg-surface-50">
+    <div class="container-narrow">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="heading-2 mb-6">About the Podcast</h2>
+        <p class="text-gray-600 mb-4">
+          Mama Talk is a podcast from Take Care Mom where we discuss everything that concerns modern moms:
+          from the first days with a baby to balancing motherhood and personal life.
+        </p>
+        <p class="text-gray-600">
+          Each episode is an honest conversation with experts, moms and specialists about
+          how to cope with challenges and find joy in motherhood.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direct link -->
+  <section class="section-padding bg-white">
+    <div class="container-narrow text-center">
+      <h2 class="heading-2 mb-4">Direct Podcast Link</h2>
+      <p class="text-gray-600 mb-8">
+        If your favorite platform is not listed, use the direct link.
+      </p>
+      <a
+        href="https://podcast.ru/1729024446"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        Open on podcast.ru
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Want to Stay Updated on New Episodes?"
+    description="Join our community and don't miss new episodes."
+    primaryCta={{ label: 'Join Community', href: 'https://t.me/takecaremomcommunity' }}
+    variant="default"
+  />
+</BaseLayout>

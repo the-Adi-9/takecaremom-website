@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import BadgeWall from '../components/BadgeWall.astro';
+import PressList from '../components/PressList.astro';
+import CTABlock from '../components/CTABlock.astro';
+---
+
+<BaseLayout
+  title="О нас"
+  description="Take Care Mom: экосистема для родителей. Наши достижения, публикации в СМИ и метрики."
+>
+  <!-- Hero -->
+  <Hero
+    title="Экосистема, которой доверяют родители"
+    subtitle="О нас"
+    description="Take Care Mom это экосистема для родителей, где каждый родитель может получить необходимые знания, поддержку и сделать правильный выбор для своего ребенка."
+    centered={true}
+    gradient={true}
+  />
+
+
+  <!-- Mission -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-coral-600 font-medium mb-2">Наша миссия</p>
+          <h2 class="heading-2 mb-6">Вы заботитесь о малыше, а мы заботимся о вас</h2>
+          <p class="text-gray-600 mb-4">
+            Мы создали Take Care Mom, потому что сами прошли через трудности первых месяцев материнства.
+            Нехватка информации, отсутствие поддержки и сотни вопросов без ответов.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Сегодня наша экосистема объединяет блог с экспертными материалами, сообщество для поддержки
+            и приложение с инструментами для отслеживания здоровья и развития ребенка.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Проверенную информацию от врачей и специалистов</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Поддержку от сообщества таких же мам</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Удобные инструменты для отслеживания развития</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-coral-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-600">Мероприятия и встречи для мам</span>
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-pink-200 rounded-3xl scale-105 blur-2xl opacity-40"></div>
+          <img src="/images/pregnant mom.png" alt="Беременная мама" class="relative rounded-3xl shadow-xl w-full" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <BadgeWall title="Достижения и награды" />
+
+  <!-- Press -->
+  <PressList title="Публикации в СМИ" />
+
+  <!-- CTA -->
+  <CTABlock
+    title="Присоединяйтесь к экосистеме"
+    description="Более 20 000 родителей уже с нами. Станьте частью сообщества."
+    primaryCta={{ label: 'Скачать приложение', href: '/app' }}
+    secondaryCta={{ label: 'Присоединиться к сообществу', href: 'https://t.me/takecaremomcommunity' }}
+    variant="coral"
+  />
+</BaseLayout>

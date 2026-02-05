@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent content from hiding behind sticky header when using anchor links */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  body {
+    @apply bg-surface-50 text-gray-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-coral-200 text-gray-900;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-coral-500 text-white hover:bg-coral-600 focus:ring-coral-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-gray-900 border-2 border-gray-200 hover:border-coral-300 hover:bg-coral-50 focus:ring-coral-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-700 hover:text-coral-600 hover:bg-coral-50 focus:ring-coral-500;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-gray-100/50;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+
+  .heading-1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-xl md:text-2xl font-semibold text-gray-900;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Decorative blobs */
+  .blob {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+
+  .blob-1 {
+    @apply w-96 h-96 bg-coral-400/20;
+  }
+
+  .blob-2 {
+    @apply w-80 h-80 bg-pink-400/20;
+  }
+
+  .blob-3 {
+    @apply w-64 h-64 bg-coral-300/30;
+  }
+}
+
+@layer utilities {
+  .gradient-coral {
+    background: linear-gradient(135deg, #ff6b6b 0%, #f472b6 100%);
+  }
+
+  .gradient-soft {
+    background: linear-gradient(180deg, #fce7f3 0%, #fdf2f8 50%, #faf9f9 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 40%, #fff5f5 100%);
+  }
+
+  /* Decorative corner shapes like in PDF */
+  .corner-shape-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    background: #ff6b6b;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    opacity: 0.9;
+  }
+
+  .corner-shape-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 200px;
+    background: #ff6b6b;
+    clip-path: polygon(0 100%, 0 0, 100% 100%);
+    opacity: 0.9;
+  }
+
+  /* Curved line decoration */
+  .curved-line {
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  /* Soft shadow for images */
+  .image-shadow {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15));
+  }
+
+  /* Badge style */
+  .badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-coral-100 text-coral-700;
+  }
+}

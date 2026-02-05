@@ -1,0 +1,92 @@
+---
+interface PressItem {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+interface Props {
+  title?: string;
+  items?: PressItem[];
+}
+
+const { title = 'СМИ о нас', items = [
+  {
+    name: 'Kapital.kz',
+    url: 'https://kapital.kz/business/120711/kak-edtech-startapy-primenyayut-iskusstvennyy-intellekt.html',
+    description: 'Как EdTech стартапы применяют искусственный интеллект'
+  },
+  {
+    name: 'Baige News',
+    url: 'https://baigenews.kz/amp/news/proekt-po-besplatnoy-podderzhke-roditeley-zapustili-molodye-mamy-iz-almaty_139949/',
+    description: 'Проект по бесплатной поддержке родителей запустили молодые мамы из Алматы'
+  },
+  {
+    name: 'Digital Business Kazakhstan',
+    url: 'https://digitalbusiness.kz/2024-02-22/prishli-s-ideey-i-poluchili-16-mln-tenge-kak-sotsialniy-proekt-dlya-mam-prevratilsya-v-ii-startap/',
+    description: 'Пришли с идеей и получили 16 млн тенге: как социальный проект превратился в ИИ-стартап'
+  },
+  {
+    name: 'Digital Business Kazakhstan',
+    url: 'https://digitalbusiness.kz/2025-07-04/startap-iz-kazahstana-stal-luchshim-na-globalnom-konkurse-ot-oon-i-poluchil-20-tisyach/',
+    description: 'Стартап из Казахстана стал лучшим на глобальном конкурсе от ООН'
+  },
+  {
+    name: 'Forbes.kz',
+    url: 'https://forbes.kz/articles/na-blagotvoritelnom-balu-eldara-abdrazakova-sobrali-67-millionov-tenge',
+    description: 'На благотворительном балу собрали 67 миллионов тенге'
+  },
+  {
+    name: 'Bradley Herald',
+    url: 'https://bradleyherald.org/2022/05/23/take-care-mom-project-empowers-new-mothers/',
+    description: 'Take Care Mom Project Empowers New Mothers'
+  },
+  {
+    name: 'Pandaland.kz',
+    url: 'https://pandaland.kz/articles/technologii/laquolrmatmosfera-stressovaya-no-interesnayaraquo-kak-dgenschiny-stroyat-startapy-v-kazakhstane',
+    description: 'Как женщины строят стартапы в Казахстане'
+  },
+  {
+    name: '103.kz',
+    url: 'https://mag.103.kz/editor/news/5539-kak-prilozhenije-takecaremom-pomogajet-mamam-spravlyatysya-s-povsednevnymi-zabotami/',
+    description: 'Как приложение TakeCareMom помогает мамам справляться с повседневными заботами'
+  },
+  {
+    name: 'THE TECH',
+    url: 'https://the-tech.kz/iz-dekreta-v-predprinimatelstvo-kak-devushki-iz-tadzhikistana-i-almaty-zapustili-uspeshnyj-startap/',
+    description: 'Из декрета в предпринимательство'
+  },
+] } = Astro.props;
+---
+
+<section class="section-padding bg-white">
+  <div class="container-wide">
+    {title && (
+      <h2 class="heading-2 text-center mb-12">{title}</h2>
+    )}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {items.map((item) => (
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card group hover:shadow-lg transition-all hover:border-coral-200 border border-transparent"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-gray-900 group-hover:text-coral-600 transition-colors mb-1">
+                {item.name}
+              </h3>
+              {item.description && (
+                <p class="text-sm text-gray-500 line-clamp-2">{item.description}</p>
+              )}
+            </div>
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-coral-500 shrink-0 mt-1 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

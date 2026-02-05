@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const teamMembers = [
+  {
+    name: 'Зульфия Урунова',
+    role: 'CEO',
+    company: 'Microsoft',
+    image: '/images/team/Zulfiya.png',
+    bio: 'Основатель и CEO Take Care Mom. Опыт работы в Microsoft. Мама, которая превратила личный опыт в миссию помочь другим родителям.',
+  },
+  {
+    name: 'Жания Айтбаева',
+    role: 'CFO',
+    company: 'KPMG',
+    image: '/images/team/Zhaniya.png',
+    bio: 'CFO и соосновательница Take Care Mom. Опыт работы в KPMG. Отвечает за финансовую стратегию и развитие бизнеса.',
+  },
+  {
+    name: 'Айгуль Алгожина',
+    role: 'Психиатр',
+    company: '',
+    image: '/images/team/Aigul.png',
+    bio: 'Врач-психиатр Take Care Mom. Помогает мамам справляться с эмоциональными трудностями материнства и заботиться о ментальном здоровье.',
+  },
+];
+---
+
+<BaseLayout
+  title="Команда"
+  description="Познакомьтесь с командой Take Care Mom: Зульфия Урунова (CEO) и Жания Айтбаева (CFO)."
+>
+  <!-- Hero -->
+  <Hero
+    title="Команда, которая создает Take Care Mom"
+    subtitle="Команда"
+    description="Мы создали Take Care Mom, потому что сами прошли через трудности материнства и хотим помочь другим родителям."
+    centered={true}
+    gradient={true}
+  />
+
+  <!-- Team members -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-3 gap-12">
+        {teamMembers.map((member) => (
+          <div class="text-center">
+            <div class="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden shadow-lg">
+              <img src={member.image} alt={member.name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h2 class="font-bold text-xl text-gray-900 mb-1">{member.name}</h2>
+            <p class="text-coral-600 font-medium mb-1">{member.role}</p>
+            {member.company && (
+              <p class="text-sm text-gray-500 mb-4">ex-{member.company}</p>
+            )}
+            <p class="text-gray-600">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section-padding bg-surface-50">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="absolute inset-0 bg-coral-200 rounded-3xl scale-105 blur-2xl opacity-40"></div>
+          <img src="/images/two_of_us.png" alt="Основательницы Take Care Mom" class="relative rounded-3xl shadow-xl w-full" loading="lazy" />
+        </div>
+        <div>
+          <h2 class="heading-2 mb-6">Наша история</h2>
+          <p class="text-gray-600 mb-4">
+            Take Care Mom начался как социальный проект двух молодых мам из Алматы.
+            Мы столкнулись с нехваткой информации и поддержки в первые месяцы материнства
+            и решили создать пространство, где каждая мама сможет найти ответы на свои вопросы.
+          </p>
+          <p class="text-gray-600 mb-4">
+            С идеей о сообществе мам мы получили государственный грант QazInnovation в 2023 году.
+            Это позволило нам развить проект в полноценную экосистему с приложением,
+            сообществом и образовательным контентом.
+          </p>
+          <p class="text-gray-600">
+            Сегодня Take Care Mom это более 20 000 подписчиков, 3500+ пользователей приложения
+            и признание на международном уровне, включая финал Antler Indonesia и UN Women Expo 2025.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-padding bg-white">
+    <div class="container-wide">
+      <h2 class="heading-2 text-center mb-12">Наши ценности</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Доверие</h3>
+          <p class="text-gray-600 text-sm">
+            Только проверенная информация от врачей и специалистов. Доказательный подход к контенту.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Поддержка</h3>
+          <p class="text-gray-600 text-sm">
+            Мы создаем безопасное пространство, где каждая мама может получить помощь и понимание.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-coral-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-coral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900 mb-2">Доступность</h3>
+          <p class="text-gray-600 text-sm">
+            Технологии и знания должны быть доступны каждому родителю, независимо от местоположения.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Хотите связаться с нами?"
+    description="Мы всегда рады обратной связи и предложениям о сотрудничестве."
+    primaryCta={{ label: 'Связаться', href: '/contact' }}
+    variant="coral"
+  />
+</BaseLayout>

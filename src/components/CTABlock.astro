@@ -1,0 +1,86 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  primaryCta?: {
+    label: string;
+    href: string;
+  };
+  secondaryCta?: {
+    label: string;
+    href: string;
+  };
+  variant?: 'default' | 'coral' | 'light';
+}
+
+const {
+  title,
+  description,
+  primaryCta,
+  secondaryCta,
+  variant = 'default'
+} = Astro.props;
+
+const variantStyles = {
+  default: 'bg-gray-900 text-white',
+  coral: 'gradient-coral text-white',
+  light: 'bg-surface-100 text-gray-900',
+};
+
+const primaryBtnStyles = {
+  default: 'bg-white text-gray-900 hover:bg-gray-100',
+  coral: 'bg-white text-coral-600 hover:bg-gray-100',
+  light: 'bg-coral-500 text-white hover:bg-coral-600',
+};
+
+const secondaryBtnStyles = {
+  default: 'border-white/30 text-white hover:bg-white/10',
+  coral: 'border-white/30 text-white hover:bg-white/10',
+  light: 'border-gray-300 text-gray-700 hover:bg-white',
+};
+---
+
+<section class:list={['section-padding', variantStyles[variant]]}>
+  <div class="container-narrow text-center">
+    <h2 class:list={[
+      'text-2xl md:text-3xl font-bold mb-4',
+      variant === 'light' ? 'text-gray-900' : 'text-white'
+    ]}>
+      {title}
+    </h2>
+    {description && (
+      <p class:list={[
+        'text-lg mb-8 max-w-xl mx-auto',
+        variant === 'light' ? 'text-gray-600' : 'text-white/80'
+      ]}>
+        {description}
+      </p>
+    )}
+    {(primaryCta || secondaryCta) && (
+      <div class="flex flex-wrap justify-center gap-4">
+        {primaryCta && (
+          <a
+            href={primaryCta.href}
+            class:list={[
+              'btn',
+              primaryBtnStyles[variant]
+            ]}
+          >
+            {primaryCta.label}
+          </a>
+        )}
+        {secondaryCta && (
+          <a
+            href={secondaryCta.href}
+            class:list={[
+              'btn border',
+              secondaryBtnStyles[variant]
+            ]}
+          >
+            {secondaryCta.label}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

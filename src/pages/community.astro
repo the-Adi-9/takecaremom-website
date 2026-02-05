@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const features = [
+  {
+    icon: 'chat',
+    title: 'Чаты по тематикам',
+    description: 'Общайтесь в чатах по интересам: питание, сон, развитие, здоровье и многое другое.',
+  },
+  {
+    icon: 'heart',
+    title: 'Психологическая поддержка',
+    description: 'Группа поддержки для мам. Делитесь переживаниями и получайте понимание от тех, кто рядом.',
+  },
+  {
+    icon: 'gift',
+    title: 'Еженедельные розыгрыши',
+    description: 'Участвуйте в розыгрышах полезных товаров и услуг для мам и малышей каждую неделю.',
+  },
+  {
+    icon: 'video',
+    title: 'Созвоны со специалистами',
+    description: 'Регулярные онлайн-встречи с педиатрами, психологами, нутрициологами и другими экспертами.',
+  },
+  {
+    icon: 'book',
+    title: 'Журнал с рекомендациями',
+    description: 'Эксклюзивный контент для участников сообщества: статьи, чек-листы и гайды.',
+  },
+  {
+    icon: 'event',
+    title: 'Ежемесячные мероприятия',
+    description: 'Встречи, мастер-классы и праздники для мам и детей. Более 100 мероприятий проведено.',
+  },
+];
+---
+
+<BaseLayout
+  title="Сообщество"
+  description="Сообщество мам TakeCareMom: поддержка, общение, розыгрыши, встречи со специалистами и ежемесячные мероприятия."
+>
+  <!-- Hero -->
+  <Hero
+    title="Сообщество мам, где вас понимают"
+    subtitle="Сообщество"
+    description="Наше сообщество мам это пространство поддержки, общения и обмена опытом. Мы объединяем мам, чтобы вместе делиться радостями и трудностями воспитания."
+    primaryCta={{ label: 'Присоединиться', href: 'https://t.me/takecaremomcommunity' }}
+    secondaryCta={{ label: 'Узнать больше', href: '#features' }}
+    gradient={true}
+  />
+
+
+  <!-- Features -->
+  <div id="features">
+    <FeatureGrid
+      title="Что вы получите в сообществе"
+      subtitle="Возможности"
+      features={features}
+    />
+  </div>
+
+  <!-- How it works -->
+  <section class="section-padding bg-white">
+    <div class="container-narrow">
+      <h2 class="heading-2 text-center mb-12">Как присоединиться</h2>
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Перейдите по ссылке</h3>
+            <p class="text-gray-600">Нажмите кнопку "Присоединиться" и перейдите в наш Telegram-канал.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Представьтесь</h3>
+            <p class="text-gray-600">Напишите в чате приветствия о себе и своем малыше.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Выберите чаты</h3>
+            <p class="text-gray-600">Присоединяйтесь к тематическим чатам, которые вам интересны.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Станьте частью самого большого сообщества мам в Казахстане"
+    description="Присоединяйтесь к 2000+ мам, которые поддерживают друг друга каждый день."
+    primaryCta={{ label: 'Присоединиться в Telegram', href: 'https://t.me/takecaremomcommunity' }}
+    variant="coral"
+  />
+</BaseLayout>

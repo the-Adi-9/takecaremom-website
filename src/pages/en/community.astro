@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTABlock from '../../components/CTABlock.astro';
+
+const features = [
+  {
+    icon: 'chat',
+    title: 'Topic-Based Chats',
+    description: 'Chat about topics of interest: nutrition, sleep, development, health and much more.',
+  },
+  {
+    icon: 'heart',
+    title: 'Psychological Support',
+    description: 'Support group for moms. Share your concerns and receive understanding from those nearby.',
+  },
+  {
+    icon: 'gift',
+    title: 'Weekly Giveaways',
+    description: 'Participate in giveaways of useful products and services for moms and babies every week.',
+  },
+  {
+    icon: 'video',
+    title: 'Specialist Calls',
+    description: 'Regular online meetings with pediatricians, psychologists, nutritionists and other experts.',
+  },
+  {
+    icon: 'book',
+    title: 'Recommendation Journal',
+    description: 'Exclusive content for community members: articles, checklists and guides.',
+  },
+  {
+    icon: 'event',
+    title: 'Monthly Events',
+    description: 'Meetups, workshops and celebrations for moms and children. Over 100 events held.',
+  },
+];
+---
+
+<BaseLayout
+  title="Community"
+  description="TakeCareMom Mom Community: support, communication, giveaways, specialist meetings and monthly events."
+  lang="en"
+>
+  <!-- Hero -->
+  <Hero
+    title="A Mom Community Where You're Understood"
+    subtitle="Community"
+    description="Our mom community is a space for support, communication and experience sharing. We unite moms to share the joys and challenges of parenting together."
+    primaryCta={{ label: 'Join', href: 'https://t.me/takecaremomcommunity' }}
+    secondaryCta={{ label: 'Learn More', href: '#features' }}
+    gradient={true}
+  />
+
+
+  <!-- Features -->
+  <div id="features">
+    <FeatureGrid
+      title="What You'll Get in the Community"
+      subtitle="Features"
+      features={features}
+    />
+  </div>
+
+  <!-- How it works -->
+  <section class="section-padding bg-white">
+    <div class="container-narrow">
+      <h2 class="heading-2 text-center mb-12">How to Join</h2>
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Click the Link</h3>
+            <p class="text-gray-600">Click the "Join" button and go to our Telegram channel.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Introduce Yourself</h3>
+            <p class="text-gray-600">Write in the welcome chat about yourself and your little one.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center shrink-0">
+            <span class="text-coral-600 font-bold">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">Choose Chats</h3>
+            <p class="text-gray-600">Join topic-based chats that interest you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABlock
+    title="Become Part of the Largest Mom Community in Kazakhstan"
+    description="Join 2000+ moms who support each other every day."
+    primaryCta={{ label: 'Join on Telegram', href: 'https://t.me/takecaremomcommunity' }}
+    variant="coral"
+  />
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+interface TeamMember {
+  name: string;
+  role: string;
+  company?: string;
+  initials?: string;
+  color?: string;
+}
+
+interface Props {
+  title?: string;
+  members?: TeamMember[];
+}
+
+const { title = 'Команда', members = [
+  {
+    name: 'Зульфия Урунова',
+    role: 'CEO',
+    company: 'Microsoft',
+    initials: 'ЗУ',
+    color: 'from-coral-400 to-pink-500'
+  },
+  {
+    name: 'Жания Айтбаева',
+    role: 'CFO',
+    company: 'KPMG',
+    initials: 'ЖА',
+    color: 'from-pink-400 to-purple-500'
+  },
+] } = Astro.props;
+---
+
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+    {title && (
+      <h2 class="heading-2 text-center mb-12">{title}</h2>
+    )}
+    <div class="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+      {members.map((member) => (
+        <div class="text-center">
+          <div class={`w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br ${member.color || 'from-coral-400 to-pink-500'} flex items-center justify-center shadow-lg`}>
+            <span class="text-3xl font-bold text-white">{member.initials || member.name.split(' ').map(n => n[0]).join('')}</span>
+          </div>
+          <h3 class="font-semibold text-lg text-gray-900">{member.name}</h3>
+          <p class="text-coral-600 font-medium">{member.role}</p>
+          {member.company && (
+            <p class="text-sm text-gray-500 mt-1">ex-{member.company}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
